@@ -1,0 +1,40 @@
+import json
+import requests
+from datetime import datetime
+
+
+def jprint(obj):
+  text = json.dumps(obj, sort_keys=True, indent=4)
+  print(text)
+
+"""response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+
+price_data=response.json()['bpi']
+
+prices=['Coinbase']
+
+for c in price_data:
+  amount = price_data[c]['rate']
+  curr_code = price_data[c]['code']
+  price = str(curr_code) + ": " + str(amount)
+  prices.insert(1, price)
+
+print(prices)
+
+response = requests.get("https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=EUR,GBP,USD,LTC,ETH")
+
+print("Cryptocompare: " + str(response.json()))"""
+
+base_url = "https://api.gemini.com/v1"
+response_usd = requests.get(base_url + "/pubticker/btcusd")
+usd_data = response_usd.json()
+
+response_eth = requests.get(base_url + "/pubticker/ethbtc")
+eth_data = response_eth.json()
+
+response_ltc = requests.get(base_url + "/pubticker/ltcbtc")
+ltc_data = response_ltc.json()
+
+print(usd_data)
+print(eth_data)
+print(ltc_data)
